@@ -1,4 +1,3 @@
----
 include:
   - docassemble.AssemblyLine:assembly_line.yml
 ---
@@ -32,11 +31,11 @@ metadata:
   allowed_courts: []
   typical_role: "plaintiff"
   al_weaver_version: "1.11.0"
-  generated_on: "2025-09-15"
+  generated_on: "2025-10-15"
   languages:
     - en
   jurisdiction: NAM-US-US+MA
-  review_date: 2025-09-15
+  review_date: 2025-10-15
   form_titles:
     - DCF disability accommodations
   form_numbers: []
@@ -76,7 +75,14 @@ code: |
   user_ask_role = "plaintiff"
   users.gather()
   set_parts(subtitle=str(users))
-  is_visual_calendar
+  is_diff_par_sched
+  is_handson_learning_med
+  is_translation_plainlanguage
+  skills_shown
+  adpt_braille
+  trans_asl
+  other_any_one
+  DCF_region
   users[0].contact_other
   interview_order_dcf_disability_accommodations = True
 ---
@@ -110,92 +116,113 @@ subquestion: |
 
   If you are a disabled and a parent or caregiver, you can use this interview to get adjustments related to your disability to be able to care for your child or ward
 ---
-id: adaptive_parenting_equipment
-question: Do you need a type of adpative parenting equiment?
-fields:
-  - "I need a type of adaptive parenting equipment": is_adaptive_equipment_any
-    datatype: checkboxes
-    choices:
-    - "I need braille Books"
-    - "I need talking thermometers"
-    - "I need a tactile medicine dispenser"
-    - "I need speech-to-text tools"
-    - "I need text-to-speech tools"
-    - "I need closed captioning during virtual meetings"
-continue button field: What type s of changes do you need
----
-id: Bulk
+id: time/place
 question: |
-  What type(s) of changes do you need?
+  Do you need changes to your parenting schedule?
 fields:
-  - "I need a visual calendar for my appointments I can hang on my wall": is_visual_calendar
+  - "A different parenting schedule": is_diff_par_sched
     datatype: yesno
-  - "I need a different parenting schedule": is_diff_par_sched
-    datatype: yesno
-    required: False
-  - "I need hands on learning during appointments about child's medical or early intervention services appointments": is_handson_learning_med
-    datatype: yesno
-  - "I need meeting notes": is_meeting_notes
-    datatype: yesno
-  - "I need longer parenting time": is_longer_par_time
-    datatype: yesno
-  - "I need to bring a plus one to meetings": is_plusone_meetings
-    datatype: yesno
-  - "I need extra processing time during meetings, including breaks": is_extra_time
-    datatype: yesno
-    required: False
-  - "I need DCF to translate the things they give me to plain language": is_translation_plainlanguage
-    datatype: yesno
-    required: False
-  - "I need appointment reminders from": is_appointment_reminders
-    datatype: yesno
-    required: False
-  - "Different location": is_diff_loc
+  - "Longer parenting time": is_longer_par_time
     datatype: yesno
   - "Shorter parenting time": is_shorter_par_time
     datatype: yesno
-  - "Other fill-in one": is_other_filling_1
+  - "Different location for parenting time": is_diff_loc
     datatype: yesno
-  - "I need a written summary of any meeting with DCF or its contractors": is_written_summary
+---
+id: meetings
+question: | 
+  Do you need help with meetings or appointments?
+fields:
+  - "Hands on learning during appointments about child's medical or early intervention services appointments": is_handson_learning_med
     datatype: yesno
-  - "I need meetings with the DCF to be virtual": is_virtual_meetings
+  - "Meeting notes during appointments": is_meeting_notes
     datatype: yesno
-  - "I need letters and DCF action plans to be written in an easier way to understand": is_change_letters_written_simpler
+  - "To bring a plus one to meetings": is_plusone_meetings
+    datatype: yesno
+  - "Extra processing time during meetings, including breaks": is_extra_time
+    datatype: yesno
+    required: False
+  - "A visual calendar for my appointments I can hang on my wall": is_visual_calendar
+    datatype: yesno
+  - "I need DCF to call or email me appointment reminders": is_appointment_reminders
+    datatype: yesno
+    required: False
+  - "A written summary of any meeting with DCF or its contractors": is_written_summary
+    datatype: yesno
+  - "I need my meetings with the DCF to be virtual": is_virtual_meetings
     datatype: yesno
   - "Meeting materials preprepared": is_meeting_materials_preprepared
     datatype: yesno
-  - "I need a change in how parenting skills are taught": is_change_taught_par_skills_any
-    datatype: checkboxes
-    choices:
-      - Being shown how to use the skills in my home
-      - Using pictures rather than words for step-by-step instructions
-    required: False
-  - "I need interpreation and translation services": is_translation_any
-    datatype: checkboxes
-    choices:
-      - American Sign Language
-      - Certified Deaf Interpreter
-      - Communication Access Real-time Translation (CART)
-    required: False
+---
+question: |
+   Do you need things to be easier to understand?
+fields:
+  - "DCF to translate the things they give me to plain language": is_translation_plainlanguage
+    datatype: yesno
+  - "Letters and DCF action plans to be written in an easier way to understand": is_change_letters_written_simpler
+    datatype: yesno
+---
+question: | 
+   Do you need a change in how you are taught parenting skills?
+fields:
+  - "I need parenting skills to be taught to me by being shown in my home": skills_shown
+    datatype: yesno
+  - "I need parenting skills to be taught to me through pictures rather than works for step-by-step instructions": skills_pictures
+    datatype: yesno
+---
+question: | 
+    Do you need any types of adaptive parenting equipment?
+fields:
+  - "I need Braille books as adaptive parenting equipment": adpt_braille
+    datatype: yesno
+  - "I need talking thermometers as adaptive parenting equipment": adpt_therm
+    datatype: yesno
+  - "I need a tactile medicine dispenser for easy access to medication as adaptive parenting equipment": adpt_med_disp
+    datatype: yesno
+  - "I need speech-to-text tools": adpt_speech_text
+    datatype: yesno
+  - "I need text-to-speech tools": adpt_text_speech
+    datatype: yesno
+  - "I need closed captioning during virtual meetings": adpt_cc
+    datatype : yesno
+---
+question: |
+   Do you need any translation services?
+fields:
+  - "I need an American Sign Language Interpreter": trans_asl
+    datatype: yesno
+  - "I need a Certified Deaf Interpreter": trans_cdi
+    datatype: yesno
+  - "I need a Communication Access Real-Time Translation (CART)": trans_cart
+    datatype: yesno
+---
+  question: |
+    Are there any other accomodations not already listed that you need?
+  fields:
   - "Other accommodation not listed": other_any_one
     required: False
   - "Other accommodation not listed": other_any_two
     required: False
+---
+ question: |
+  What DCF region do you live in?
+ fields:
   - "What Dcf region do you live in?": DCF_region
-    datatype: checkboxes
+    datatype: radio
     choices:
-      - Boston Region
-      - Northern Region
-      - Southern Region
-      - Western Region
-      - Central Region
+      - "Boston Region"
+      - "Northern Region"
+      - "Southern Region"
+      - "Western Region"
+      - "Central Region"
 ---
 question: |
   How can DCF contact you?
 fields:
   - "Your phone number": users[0].contact_phone
     datatype: number
-  - "User's non-phone contact information": users[0].contact_other
+    required: False
+  - "Non-phone contact information": users[0].contact_other
     required: False
 ---
 id: preview dcf_disability_accommodations
@@ -222,121 +249,125 @@ event: review_dcf_disability_accommodations
 question: |
   Review your answers
 review:
-  - Edit: is_visual_calendar
-    button: |
-      **Visual calendar**:
-      ${ word(yesno(is_visual_calendar)) }
-  - Edit: is_adaptive_equipment_any
-    button: |
-      **Adaptive equipment**:
-      ${ is_adaptive_equipment_any }
-  - Edit: other_any_one
-    button: |
-      **Other option one**:
-      ${ other_any_one }
   - Edit: users.revisit
     button: |
-      **Users**
+      **Name**
 
       % for item in users:
         * ${ item }
       % endfor
-  - Edit: other_any_three
-    button: |
-      **Other Option three**:
-      ${ other_any_three }
-  - Edit: is_diff_par_sched
-    button: |
-      **Different parenting schedule**:
-      ${ word(yesno(is_diff_par_sched)) }
-  - Edit: is_handson_learning_med
-    button: |
-      **Hands on learning during appointments**:
-      ${ word(yesno(is_handson_learning_med)) }
-  - Edit: is_meeting_notes
-    button: |
-      **Meeting notes**:
-      ${ word(yesno(is_meeting_notes)) }
-  - Edit: is_bestcontact_other
-    button: |
-      **Is best contact other**:
-      ${ word(yesno(is_bestcontact_other)) }
-  - Edit: is_other_filling_3
-    button: |
-      **Other fill-in three**:
-      ${ word(yesno(is_other_filling_3)) }
-  - Edit: is_longer_par_time
-    button: |
-      **Longer parenting time**:
-      ${ word(yesno(is_longer_par_time)) }
-  - Edit: is_plusone_meetings
-    button: |
-      **Plus one to meetings**:
-      ${ word(yesno(is_plusone_meetings)) }
-  - Edit: is_extra_time
-    button: |
-      **Extra processing time**:
-      ${ word(yesno(is_extra_time)) }
-  - Edit: is_other_filling_2
-    button: |
-      **Other fill-in two**:
-      ${ word(yesno(is_other_filling_2)) }
-  - Edit: is_bestcontact_phone
-    button: |
-      **Is best contact phone**:
-      ${ word(yesno(is_bestcontact_phone)) }
-  - Edit: is_translation_plainlanguage
-    button: |
-      **Translate to plain language**:
-      ${ word(yesno(is_translation_plainlanguage)) }
-  - Edit: is_appointment_reminders
-    button: |
-      **Appointment reminders**:
-      ${ word(yesno(is_appointment_reminders)) }
-  - Edit: other_any_two
-    button: |
-      **Other any two**:
-      ${ other_any_two }
   - Edit: DCF_region
     button: |
       **Dcf region**:
       ${ DCF_region }
-  - Edit: is_diff_loc
+  - Edit: is_diff_par_sched
     button: |
-      **Different location**:
-      ${ word(yesno(is_diff_loc)) }
+      **A different parenting schedule**:
+      ${is_diff_par_sched}
+  - Edit: is_longer_par_time
+    button: |
+      **Longer parenting time**:
+      ${is_longer_par_time}
   - Edit: is_shorter_par_time
     button: |
       **Shorter parenting time**:
-      ${ word(yesno(is_shorter_par_time)) }
-  - Edit: is_other_filling_1
+      ${is_shorter_par_time}
+  - Edit: is_diff_loc
     button: |
-      **Other fill-in one**:
-      ${ word(yesno(is_other_filling_1)) }
+      **Different location for parenting time**:
+      ${is_diff_loc}
+  - Edit: is_handson_learning_med
+    button: |
+      **Hands on learning during appointments about child's medical or early intervention services appointments**:
+      ${is_handson_learning_med}
+  - Edit: is_meeting_notes
+    button: |
+      **Meeting notes during appointments**:
+      ${is_meeting_notes}
+  - Edit: is_plusone_meetings
+    button: |
+      **To bring a plus one to meetings**:
+      ${is_plusone_meetings}
+  - Edit: is_extra_time
+    button: |
+      **Extra processing time during meetings, including breaks**:
+      ${is_extra_time}
+  - Edit: is_visual_calendar
+    button: |
+      **A visual calendar for my appointments I can hang on my wall**:
+      ${is_visual_calendar}
+  - Edit: is_appointment_reminders
+    button: |
+      **I need DCF to call or email me appointment reminders**:
+      ${is_appointment_reminders}
   - Edit: is_written_summary
     button: |
-      **Written summary**:
-      ${ word(yesno(is_written_summary)) }
+      **A written summary of any meeting with DCF or its contractors**:
+      ${is_written_summary}
   - Edit: is_virtual_meetings
     button: |
-      **Virtual meetings**:
-      ${ word(yesno(is_virtual_meetings)) }
-  - Edit: is_translation_any
-    button: |
-      **Translation**:
-      ${ is_translation_any }
-  - Edit: is_change_letters_written_simpler
-    button: |
-      **Change letters to be written simpler**:
-      ${ word(yesno(is_change_letters_written_simpler)) }
-  - Edit: is_change_taught_par_skills_any
-    button: |
-      **Is change taught par skills any**:
-      ${ is_change_taught_par_skills_any }
+      **I need my meetings with the DCF to be virtual**:
+      ${is_virtual_meetings}
   - Edit: is_meeting_materials_preprepared
     button: |
       **Meeting materials preprepared**:
-      ${ word(yesno(is_meeting_materials_preprepared)) }
+      ${is_meeting_materials_preprepared}
+  - Edit: is_translation_plainlanguage
+    button: |
+      **DCF to translate the things they give me to plain language**:
+      ${is_translation_plainlanguage}
+  - Edit: is_change_letters_written_simpler
+    button: |
+      **Letters and DCF action plans to be written in an easier way to understand**:
+      ${is_change_letters_written_simpler}
+  - Edit: skills_shown
+    button: |
+      **I need parenting skills to be taught to me by being shown in my home**:
+      ${skills_shown}
+  - Edit: skills_pictures
+    button: |
+      **I need parenting skills to be taught to me through pictures rather than works for step-by-step instructions**:
+      ${skills_pictures}
+  - Edit: adpt_braille
+    button: |
+      **Braille books as adaptive parenting equipment**:
+      ${adpt_braille}
+  - Edit: adpt_therm
+    button: |
+      **Talking thermometers as adaptive parenting equipment**:
+      ${adpt_therm}
+  - Edit: adpt_med_disp
+    button: |
+      **A tactile medicine dispenser for easy access to medication as adaptive parenting equipment**:
+      ${adpt_med_disp}
+  - Edit: adpt_speech_text
+    button: |
+      **Speech-to-text tools**:
+      ${adpt_speech_text}
+  - Edit: adpt_text_speech
+    button: |
+      **Text-to-speech tools**:
+      ${adpt_text_speech}
+  - Edit: adpt_cc
+    button: |
+      **Closed captioning during virtual meetings**:
+      ${adpt_cc}
+  - Edit: trans_cdi
+    button: |
+      **I need a Certified Deaf Interpreter**:
+      ${trans_cdi}
+  - Edit: other_any_one
+    button: |
+      **I need a Communication Access Real-Time Translation (CART)**:
+      ${trans_cart}
+  - Edit: other_any_one
+    button: |
+      **Other accommodation not listed**:
+      ${other_any_one}
+  - Edit: other_any_two
+    button: |
+      **Other accommodation not listed**:
+      ${other_any_two}
 ---
 continue button field: users.revisit
 question: |
@@ -383,7 +414,7 @@ progress: 100
 ---
 # ALDocument objects specify the metadata for each template
 objects:
-  - dcf_disability_accommodations_Post_interview_instructions: ALDocument.using(title="Instructions", filename="dcf_disability_accommodations_next_steps.docx", enabled=True, has_addendum=False)
+  - dcf_disability_accommodations_Post_interview_instructions: ALDocument.using(title="Next Steps", filename="Next_Steps_for_DCF_ADA_Request.docx", enabled=True, has_addendum=False)
   - dcf_disability_accommodations_attachment: ALDocument.using(title="DCF disability accommodations", filename="dcf_disability_accommodations", enabled=True, has_addendum=False, )
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
@@ -396,8 +427,8 @@ objects:
 # `i` to show or hide the user's signature
 attachment:
   name: Post-interview-Instructions
-  filename: dcf_disability_accommodations_next_steps
-  docx template file: dcf_disability_accommodations_next_steps.docx
+  filename: Next_Steps_for_DCF_ADA_Request.docx
+  docx template file: Next_Steps_for_DCF_ADA_Request.docx
   variable name: dcf_disability_accommodations_Post_interview_instructions[i]
   skip undefined: True
   tagged pdf: True
