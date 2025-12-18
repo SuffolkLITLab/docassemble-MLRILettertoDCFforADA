@@ -474,7 +474,7 @@ attachment:
   filename: dcf_disability_accommodations
   variable name: dcf_disability_accommodations_attachment[i]
   skip undefined: True
-  docx template file: DCF_Disability_Accommodations.docx
+  docx template file: dcf_disability_accommodations.docx
   tagged pdf: True
 
 
