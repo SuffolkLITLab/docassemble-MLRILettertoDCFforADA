@@ -9,11 +9,19 @@ metadata:
     DCF accommodations
   description: |-
     This interview helps someone in Massachusetts get a change in rules when talking with DCF.
+
+    For example, it can help you:
+
+    * Get a different parenting schedule
+    * Get help with meetings or appointments
+    * Get things to be easier to understand
+    * Get a change in how you are taught parenting skills
+    * Get any types of adaptive parenting equipment
+    
   can_I_use_this_form: |
-    If you are a disabled and a parent or caregiver, you can use this interview to get adjustments related to your disability to be able to care for your child or ward, especially
+    If you have a disability and you are a parent or caregiver, you can use this interview to get adjustments related to your disability to be able to care for your child or ward.
   before_you_start: |
-    This interview will help you get a change in rules when talking with DCF.
-    Please select any changes you need to better help you take care of your child or ward.
+    You need to know what accommodations you need from DCF because of your disability, and information about your DCF case, including your DCF region.
   maturity: production
   estimated_completion_minutes: 10
   estimated_completion_delta: 5
@@ -36,7 +44,7 @@ metadata:
   languages:
     - en
   jurisdiction: NAM-US-US+MA
-  review_date: 2025-10-15
+  review_date: 2025-12-18
   form_titles:
     - DCF disability accommodations
   form_numbers: []
