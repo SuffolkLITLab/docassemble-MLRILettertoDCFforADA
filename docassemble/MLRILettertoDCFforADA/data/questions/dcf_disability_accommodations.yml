@@ -121,9 +121,13 @@ question: |
   DCF disability accommodations
 subquestion: |
   This interview will help you get a change in rules when talking with DCF.
-  Please select any changes you need to better help you take care of your child or ward.
 
-  If you are a disabled and a parent or caregiver, you can use this interview to get adjustments related to your disability to be able to care for your child or ward
+  If you are a disabled and a parent or caregiver, you can use this interview to get adjustments related to your disability .
+
+  Before you start, you should find out:
+
+  * What accommodations you need from DCF because of your disability
+  * Information about your DCF case, including your DCF region.
 ---
 id: time/place
 question: |
@@ -227,7 +231,7 @@ help:
     Communication Access Real-Time Translation (CART) is a tool that automatically translates spoken words into written text to help with communication
 ---
   question: |
-    Are there any other accomodations not already listed that you need
+    Are there any other accommodations not already listed that you need
   progress: 70
   fields:
   - "Other accommodation not listed": other_any_one
@@ -237,6 +241,8 @@ help:
 ---
 question: |
   What DCF region do you live in?
+subquestion: |
+  ${ collapse_template(dcf_region_help_template) }
 progress: 80
 fields:
   - "What DCF region do you live in?": DCF_region
@@ -247,11 +253,12 @@ fields:
       - "Southern Region"
       - "Western Region"
       - "Central Region"
-help:
-  label: Don't know your region?
-  heading: What region am I in?
-  content: |
-      Your DCF region can be found on Mass.gov, <a target="_self" href="https://www.mass.gov/info-details/dcf-area-offices-by-citytown"> linked here</a>
+---
+template: dcf_region_help_template
+subject: |
+  How do I know what region I am in?
+content: |
+  <a target="_blank" href="https://www.mass.gov/info-details/dcf-area-offices-by-citytown">Find your DCF region on Mass.gov</a>
 ---
 question: |
   How can DCF contact you?
