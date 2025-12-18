@@ -1,5 +1,6 @@
 include:
   - docassemble.AssemblyLine:assembly_line.yml
+  - docassemble.HOMELineTheme:main.yml
 ---
 metadata:
   title: >-
@@ -119,6 +120,7 @@ subquestion: |
 id: time/place
 question: |
   Do you need changes to your parenting schedule?
+progress: 10
 fields:
   - "A different parenting schedule": is_diff_par_sched
     datatype: yesno
@@ -128,10 +130,12 @@ fields:
     datatype: yesno
   - "Different location for parenting time": is_diff_loc
     datatype: yesno
+
 ---
 id: meetings
 question: | 
   Do you need help with meetings or appointments?
+progress: 20
 fields:
   - "Hands on learning during appointments about child's medical or early intervention services appointments": is_handson_learning_med
     datatype: yesno
@@ -156,6 +160,7 @@ fields:
 ---
 question: |
    Do you need things to be easier to understand?
+progress: 30
 fields:
   - "DCF to translate the things they give me to plain language": is_translation_plainlanguage
     datatype: yesno
@@ -164,50 +169,69 @@ fields:
 ---
 question: | 
    Do you need a change in how you are taught parenting skills?
+progress: 40
 fields:
-  - "I need parenting skills to be taught to me by being shown in my home": skills_shown
+  - "Yes, teach me by showing me the skills in my home": skills_shown
     datatype: yesno
-  - "I need parenting skills to be taught to me through pictures rather than works for step-by-step instructions": skills_pictures
+  - "Yes, teach to me through pictures rather than works for step-by-step instructions": skills_pictures
     datatype: yesno
 ---
 question: | 
     Do you need any types of adaptive parenting equipment?
+progress: 50
 fields:
-  - "I need Braille books as adaptive parenting equipment": adpt_braille
+  - "Braille books": adpt_braille
     datatype: yesno
-  - "I need talking thermometers as adaptive parenting equipment": adpt_therm
+  - "Talking thermometers": adpt_therm
     datatype: yesno
-  - "I need a tactile medicine dispenser for easy access to medication as adaptive parenting equipment": adpt_med_disp
+  - "Tactile medicine dispenser": adpt_med_disp
     datatype: yesno
   - "I need speech-to-text tools": adpt_speech_text
     datatype: yesno
   - "I need text-to-speech tools": adpt_text_speech
     datatype: yesno
-  - "I need closed captioning during virtual meetings": adpt_cc
+  - "Closed captioning during virtual meetings": adpt_cc
     datatype : yesno
+help:
+  label: What is a tacticle medicine dispenser?
+  heading: Tacticle medicine dispenser
+  content: |
+   A tactile medicine dispenser is a device that uses the sense of touch to help users, particularly those with visual impairments or limited dexterity, accurately dispense medication. This is often combined with audible and visual cues to ensure correct dosing and improved adherence to medication schedules
 ---
 question: |
-   Do you need any translation services?
+   Do you need any services for the hearing/speaking impaired?
+progress: 60
 fields:
-  - "I need an American Sign Language Interpreter": trans_asl
+  - "American Sign Language Interpreter": trans_asl
     datatype: yesno
-  - "I need a Certified Deaf Interpreter": trans_cdi
+  - "Certified Deaf Interpreter": trans_cdi
     datatype: yesno
-  - "I need a Communication Access Real-Time Translation (CART)": trans_cart
+  - "Communication Access Real-Time Translation (CART)": trans_cart
     datatype: yesno
+help:
+  label: Learn more about these services
+  heading: What do those services mean?
+  content: |
+    An American Sign Language Interpreter is someone who knows both spoken english and ASL, who can translate for you, if you use ASL to communicate
+   
+    A certified deaf intrepreter is a someone who is a professional who works with an ASL interpreter to help deaf people communicate with the DCF with more than just translation
+    
+    Communication Access Real-Time Translation (CART) is a tool that automatically translates spoken words into written text to help with communication
 ---
   question: |
-    Are there any other accomodations not already listed that you need?
+    Are there any other accomodations not already listed that you need
+  progress: 70
   fields:
   - "Other accommodation not listed": other_any_one
     required: False
   - "Other accommodation not listed": other_any_two
     required: False
 ---
- question: |
+question: |
   What DCF region do you live in?
- fields:
-  - "What Dcf region do you live in?": DCF_region
+progress: 80
+fields:
+  - "What DCF region do you live in?": DCF_region
     datatype: radio
     choices:
       - "Boston Region"
@@ -215,13 +239,18 @@ fields:
       - "Southern Region"
       - "Western Region"
       - "Central Region"
+help:
+  label: Don't know your region?
+  heading: What region am I in?
+  content: |
+      Your DCF region can be found on Mass.gov, <a target="_self" href="https://www.mass.gov/info-details/dcf-area-offices-by-citytown"> linked here</a>
 ---
 question: |
   How can DCF contact you?
+progress: 90
 fields:
-  - "Your phone number": users[0].contact_phone
-    datatype: number
-    required: False
+  - "Phone number": users[0].contact_phone
+    required: True
   - "Non-phone contact information": users[0].contact_other
     required: False
 ---
@@ -256,9 +285,17 @@ review:
       % for item in users:
         * ${ item }
       % endfor
+  - Edit: users[0].contact_phone
+    button: |
+      **Phone number**:
+      ${ users[0].contact_phone }
+  - Edit: users[0].contact_other
+    button: |
+      **Other contact information**:
+      ${ users[0].contact_other }
   - Edit: DCF_region
     button: |
-      **Dcf region**:
+      **Dcf Region**:
       ${ DCF_region }
   - Edit: is_diff_par_sched
     button: |
@@ -388,7 +425,6 @@ columns:
       row_item.name.full() if defined("row_item.name.first") else ""
 edit:
   - contact_other
-  - contact_phone
   - name.first
 confirm: True
 
@@ -415,7 +451,7 @@ progress: 100
 # ALDocument objects specify the metadata for each template
 objects:
   - dcf_disability_accommodations_Post_interview_instructions: ALDocument.using(title="Next Steps", filename="Next_Steps_for_DCF_ADA_Request.docx", enabled=True, has_addendum=False)
-  - dcf_disability_accommodations_attachment: ALDocument.using(title="DCF disability accommodations", filename="dcf_disability_accommodations", enabled=True, has_addendum=False, )
+  - dcf_disability_accommodations_attachment: ALDocument.using(title="DCF disability accommodations", filename="DCF_Disability_Accommodations.docx", enabled=True, has_addendum=False, )
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
@@ -438,7 +474,7 @@ attachment:
   filename: dcf_disability_accommodations
   variable name: dcf_disability_accommodations_attachment[i]
   skip undefined: True
-  docx template file: dcf_disability_accommodations.docx
+  docx template file: DCF_Disability_Accommodations.docx
   tagged pdf: True
 
 
