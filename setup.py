@@ -44,7 +44,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.MLRILettertoDCFforADA',
-      version='0.0.1',
+      version='0.2.0',
       description=('An interview to allow a user to automatically create a letter to DCF for ADA accommodations'),
       long_description='# docassemble.MLRILettertoDCFforADA\r\n\r\nAn interview to allow a user to automatically create a letter to DCF for ADA accommodations\r\n\r\n## Author\r\n\r\nMatthew Greeley, Matthew.greeley@su.suffolk.edu\r\n\r\n',
       long_description_content_type='text/markdown',

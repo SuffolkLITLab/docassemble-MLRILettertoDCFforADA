@@ -23,6 +23,8 @@ metadata:
   before_you_start: |
     You need to know what accommodations you need from DCF because of your disability, and information about your DCF case, including your DCF region.
   maturity: production
+  help_page_url: https://www.masslegalhelp.org/children-families-divorce/department-children-and-families-dcf/disability-rights-dcf
+  help_page_title: Disability rights with DCF
   estimated_completion_minutes: 10
   estimated_completion_delta: 5
   LIST_topics: 
@@ -59,7 +61,7 @@ code: |
   AL_DEFAULT_STATE = "MA"
 ---
 code: |
-  github_repo_name =  'docassemble-DcfDisabilityAccommodations'
+  github_repo_name =  'docassemble-MLRILettertoDCFforADAs'
 ---
 code: |
   interview_short_title = "Get a change in rules when talking with DCF"
