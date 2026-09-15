@@ -172,6 +172,7 @@ fields:
   - "Meeting materials preprepared": is_meeting_materials_preprepared
     datatype: yesno
 ---
+id: "do you need things to be easier to understand"
 question: |
    Do you need things to be easier to understand?
 progress: 30
@@ -181,6 +182,7 @@ fields:
   - "Letters and DCF action plans to be written in an easier way to understand": is_change_letters_written_simpler
     datatype: yesno
 ---
+id: "do you need a change in how you are taught parenting skills"
 question: | 
    Do you need a change in how you are taught parenting skills?
 progress: 40
@@ -190,6 +192,7 @@ fields:
   - "Yes, teach to me through pictures rather than works for step-by-step instructions": skills_pictures
     datatype: yesno
 ---
+id: "do you need any types of adaptive parenting equipment"
 question: | 
     Do you need any types of adaptive parenting equipment?
 progress: 50
@@ -212,6 +215,7 @@ help:
   content: |
    A tactile medicine dispenser is a device that uses the sense of touch to help users, particularly those with visual impairments or limited dexterity, accurately dispense medication. This is often combined with audible and visual cues to ensure correct dosing and improved adherence to medication schedules
 ---
+id: "do you need any services for the hearing speaking impaired"
 question: |
    Do you need any services for the hearing/speaking impaired?
 progress: 60
@@ -232,6 +236,7 @@ help:
     
     Communication Access Real-Time Translation (CART) is a tool that automatically translates spoken words into written text to help with communication
 ---
+  id: "are there any other accommodations not already listed that you need"
   question: |
     Are there any other accommodations not already listed that you need
   progress: 70
@@ -241,6 +246,7 @@ help:
   - "Other accommodation not listed": other_any_two
     required: False
 ---
+id: "what dcf region do you live in"
 question: |
   What DCF region do you live in?
 subquestion: |
@@ -262,6 +268,7 @@ subject: |
 content: |
   <a target="_blank" href="https://www.mass.gov/info-details/dcf-area-offices-by-citytown">Find your DCF region on Mass.gov</a>
 ---
+id: "how can dcf contact you"
 question: |
   How can DCF contact you?
 progress: 90
@@ -424,6 +431,7 @@ review:
       ${other_any_two}
 ---
 continue button field: users.revisit
+id: "edit users"
 question: |
   Edit users
 subquestion: |
